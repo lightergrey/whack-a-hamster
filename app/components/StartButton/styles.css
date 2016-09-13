@@ -1,0 +1,6 @@
+.startButton { /* stylelint-disable */
+  background: red;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  font-weight: bold;
+}

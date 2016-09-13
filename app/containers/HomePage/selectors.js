@@ -11,7 +11,13 @@ const selectScore = () => createSelector(
   (homeState) => homeState.get('score')
 );
 
+const selectGrid = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('grid')
+);
+
 export {
   selectHome,
   selectScore,
+  selectGrid,
 };

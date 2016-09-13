@@ -6,11 +6,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
-import { generateGrid } from './actions';
+import { startGame } from './actions';
 
 import StartButton from 'components/StartButton';
 
 import {
+  selectIsStarted,
   selectScore,
   selectGrid,
 } from './selectors';
@@ -27,6 +28,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 }
 
 HomePage.propTypes = {
+  isStarted: React.PropTypes.bool,
   score: React.PropTypes.number,
   onClickStart: React.PropTypes.func,
   grid: React.PropTypes.oneOfType([
@@ -38,13 +40,14 @@ HomePage.propTypes = {
 function mapDispatchToProps(dispatch) {
   return {
     onClickStart: () => {
-      dispatch(generateGrid());
+      dispatch(startGame());
     },
     dispatch,
   };
 }
 
 const mapStateToProps = createStructuredSelector({
+  isStarted: selectIsStarted(),
   score: selectScore(),
   grid: selectGrid(),
 });

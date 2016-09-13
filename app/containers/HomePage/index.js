@@ -9,14 +9,11 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectScore } from './selectors';
 
-import Score from 'components/Score';
-
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
       <div>
-        <Score score={this.props.score} />
       </div>
     );
   }

@@ -5,36 +5,31 @@
 import {
   START_GAME,
   INCREMENT_SCORE,
-  GENERATE_GRID,
 } from './constants';
 
 import { List, fromJS } from 'immutable';
 
-function generateGrid(size) {
-  const grid = new List(
-    Array(size).fill().map(() => Array(size))
-  );
-  return grid;
+function generateHoles(width, height) {
+  return new List(Array(width * height).fill(true));
 }
 
 const initialState = fromJS({
+  width: 4, // This will be setable in the future
+  height: 4, // This will be setable in the future
   isStarted: false,
+  holes: false,
   score: 0,
-  size: 4, // This will be setable in the future
-  grid: false,
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
       return state
-        .set('isStarted', true);
+        .set('isStarted', true)
+        .set('holes', generateHoles(state.get('width'), state.get('height')));
     case INCREMENT_SCORE:
       return state
         .set('score', state.get('score') + 1);
-    case GENERATE_GRID:
-      return state
-        .set('grid', generateGrid(state.get('size')));
     default:
       return state;
   }

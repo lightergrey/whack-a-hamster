@@ -5,7 +5,6 @@
 import {
   START_GAME,
   INCREMENT_SCORE,
-  GENERATE_GRID,
 } from './constants';
 
 export function startGame() {
@@ -17,11 +16,5 @@ export function startGame() {
 export function incrementScore() {
   return {
     type: INCREMENT_SCORE,
-  };
-}
-
-export function generateGrid() {
-  return {
-    type: GENERATE_GRID,
   };
 }

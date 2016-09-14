@@ -11,19 +11,19 @@ const selectIsStarted = () => createSelector(
   (homeState) => homeState.get('isStarted')
 );
 
+const selectHoles = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('holes')
+);
+
 const selectScore = () => createSelector(
   selectHome(),
   (homeState) => homeState.get('score')
 );
 
-const selectGrid = () => createSelector(
-  selectHome(),
-  (homeState) => homeState.get('grid')
-);
-
 export {
-  selectIsStarted,
   selectHome,
+  selectIsStarted,
+  selectHoles,
   selectScore,
-  selectGrid,
 };

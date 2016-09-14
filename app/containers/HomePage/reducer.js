@@ -8,9 +8,11 @@ import {
 } from './constants';
 
 import { List, fromJS } from 'immutable';
+import luckio from 'luckio';
 
 function generateHoles(width, height) {
-  return new List(Array(width * height).fill(true));
+  const isLucky = luckio(20);
+  return new List(Array(width * height).fill().map(() => isLucky()));
 }
 
 const initialState = fromJS({

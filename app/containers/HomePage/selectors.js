@@ -21,6 +21,16 @@ const selectWidth = () => createSelector(
   (homeState) => homeState.get('width')
 );
 
+const selectRounds = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('rounds')
+);
+
+const selectDuration = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('duration')
+);
+
 const selectScore = () => createSelector(
   selectHome(),
   (homeState) => homeState.get('score')
@@ -31,5 +41,7 @@ export {
   selectIsStarted,
   selectHoles,
   selectWidth,
+  selectRounds,
+  selectDuration,
   selectScore,
 };

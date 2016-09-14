@@ -7,18 +7,27 @@
 import React from 'react';
 import Hole from '../Hole';
 
-function Grid({ width, height, holes, onClickMole }) {
+import styles from './styles.css';
+
+function Grid({ width, holes, onClickMole }) {
   let content;
   if (holes) {
+    const grid = holes.reduce((prev, val, i, arr) => (
+      (!(i % width) ? (prev.push(arr.slice(i, i + width)), prev) : prev)
+    ), []);
+
     content = (
-      holes.map((item, index) => (
-        <Hole mole={item} key={`item-${index}`} onClickMole={onClickMole} />
-      ))
+      grid.map((row, index) => (
+        <div className={styles.row} key={`row-${index}`}>
+          {row.map((item, i) => <Hole mole={item} key={`item-${i}`} onClickMole={onClickMole} />)}
+        </div>
+        )
+      )
     );
   }
 
   return (
-    <div id="grid">
+    <div className={styles.grid}>
       {content}
     </div>
   );
@@ -27,9 +36,8 @@ function Grid({ width, height, holes, onClickMole }) {
 Grid.propTypes = {
   onClickMole: React.PropTypes.func.isRequired,
   width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired,
   holes: React.PropTypes.oneOfType([
-    React.PropTypes.array,
+    React.PropTypes.object,
     React.PropTypes.bool,
   ]),
 };

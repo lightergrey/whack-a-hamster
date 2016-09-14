@@ -16,6 +16,11 @@ const selectHoles = () => createSelector(
   (homeState) => homeState.get('holes')
 );
 
+const selectWidth = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('width')
+);
+
 const selectScore = () => createSelector(
   selectHome(),
   (homeState) => homeState.get('score')
@@ -25,5 +30,6 @@ export {
   selectHome,
   selectIsStarted,
   selectHoles,
+  selectWidth,
   selectScore,
 };

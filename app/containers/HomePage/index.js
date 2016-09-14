@@ -18,6 +18,7 @@ import Grid from 'components/Grid';
 import {
   selectIsStarted,
   selectHoles,
+  selectWidth,
   selectScore,
 } from './selectors';
 
@@ -27,7 +28,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
     return (
       <div>
         <Score score={this.props.score} />
-        <Grid onClickMole={this.props.onClickMole} width={4} height={4} holes={this.props.holes} />
+        <Grid onClickMole={this.props.onClickMole} width={this.props.width} holes={this.props.holes} />
         <StartButton onClickStart={this.props.onClickStart}>Start</StartButton>
       </div>
     );
@@ -37,9 +38,10 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 HomePage.propTypes = {
   isStarted: React.PropTypes.bool,
   holes: React.PropTypes.oneOfType([
-    React.PropTypes.array,
+    React.PropTypes.object,
     React.PropTypes.bool,
   ]),
+  width: React.PropTypes.number.isRequired,
   score: React.PropTypes.number,
   onClickStart: React.PropTypes.func,
   onClickMole: React.PropTypes.func.isRequired,
@@ -60,6 +62,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   isStarted: selectIsStarted(),
   holes: selectHoles(),
+  width: selectWidth(),
   score: selectScore(),
 });
 

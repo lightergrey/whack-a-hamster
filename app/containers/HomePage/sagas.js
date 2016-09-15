@@ -24,13 +24,13 @@ export function* roundCounter(rounds, duration) {
   let count = rounds;
   return eventChannel(emitter => {
     const interval = setInterval(() => {
+      count -= 1;
       if (count > 0) {
         emitter(count);
       } else {
         emitter(END);
         clearInterval(interval);
       }
-      count -= 1;
     }, duration);
     return () => {
       clearInterval(interval);
@@ -47,9 +47,9 @@ export function* startRounds() {
   try {
     while (true) { // eslint-disable-line no-constant-condition
       const count = width * height;
-      yield take(chan);
       const moles = yield call(getMoles, count);
       yield put(populateHoles(moles));
+      yield take(chan);
     }
   } finally {
     yield put(endGame());

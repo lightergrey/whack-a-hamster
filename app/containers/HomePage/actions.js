@@ -5,7 +5,7 @@
 import {
   START_GAME,
   END_GAME,
-  GENERATE_HOLES,
+  POPULATE_HOLES,
   INCREMENT_SCORE,
 } from './constants';
 
@@ -21,9 +21,10 @@ export function endGame() {
   };
 }
 
-export function generateHoles() {
+export function populateHoles(moles) {
   return {
-    type: GENERATE_HOLES,
+    type: POPULATE_HOLES,
+    moles,
   };
 }
 

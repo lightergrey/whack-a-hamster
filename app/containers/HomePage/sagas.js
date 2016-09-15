@@ -1,6 +1,8 @@
 import { fork, call, put, take, select } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 
+import getMoles from 'utils/getMoles';
+
 import {
   START_GAME,
   END_GAME,
@@ -8,12 +10,14 @@ import {
 
 import {
   endGame,
-  generateHoles,
+  populateHoles,
 } from './actions';
 
 import {
   selectRounds,
   selectDuration,
+  selectWidth,
+  selectHeight,
 } from './selectors';
 
 export function* roundCounter(rounds, duration) {
@@ -37,15 +41,17 @@ export function* roundCounter(rounds, duration) {
 export function* startRounds() {
   const rounds = yield select(selectRounds());
   const duration = yield select(selectDuration());
+  const width = yield select(selectWidth());
+  const height = yield select(selectHeight());
   const chan = yield call(roundCounter, rounds, duration);
   try {
     while (true) { // eslint-disable-line no-constant-condition
-      const round = yield take(chan);
-      console.log(`roundCounter: ${round}`); // eslint-disable-line no-console
-      yield put(generateHoles());
+      const count = width * height;
+      yield take(chan);
+      const moles = yield call(getMoles, count);
+      yield put(populateHoles(moles));
     }
   } finally {
-    console.log('countdown terminated'); // eslint-disable-line no-console
     yield put(endGame());
   }
 }

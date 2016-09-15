@@ -17,6 +17,7 @@ import Grid from 'components/Grid';
 
 import {
   selectIsStarted,
+  selectIsFinished,
   selectHoles,
   selectWidth,
   selectScore,
@@ -25,11 +26,29 @@ import {
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    let startButton;
+    if (!this.props.isStarted) {
+      startButton = (
+        <StartButton onClickStart={this.props.onClickStart}>Start</StartButton>
+      );
+    }
+
+    let score;
+    if (this.props.isFinished) {
+      score = (
+        <Score score={this.props.score} />
+      );
+    }
+
     return (
       <div>
-        <Score score={this.props.score} />
-        <Grid onClickMole={this.props.onClickMole} width={this.props.width} holes={this.props.holes} />
-        <StartButton onClickStart={this.props.onClickStart}>Start</StartButton>
+        {score}
+        {startButton}
+        <Grid
+          onClickMole={this.props.onClickMole}
+          width={this.props.width}
+          holes={this.props.holes}
+        />
       </div>
     );
   }
@@ -37,6 +56,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 
 HomePage.propTypes = {
   isStarted: React.PropTypes.bool,
+  isFinished: React.PropTypes.bool,
   holes: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,
@@ -61,6 +81,7 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   isStarted: selectIsStarted(),
+  isFinished: selectIsFinished(),
   holes: selectHoles(),
   width: selectWidth(),
   score: selectScore(),

@@ -6,19 +6,14 @@
 
 import React from 'react';
 
-import styles from './styles.css';
-
-function Score(props) {
+function Score({ score }) {
   return (
-    <div className={styles.score}>
-      <h2>Score: { props.score }</h2>
-    </div>
+    <h2>Score: { score }</h2>
   );
 }
 
 Score.propTypes = {
   score: React.PropTypes.number.isRequired,
 };
-
 
 export default Score;

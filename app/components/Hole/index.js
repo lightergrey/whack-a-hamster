@@ -14,6 +14,7 @@ function Hole({ mole, onClickMole }) {
   if (mole) {
     content = <Mole onClickMole={onClickMole} />;
   }
+
   return (
     <div className={styles.hole}>
       {content}

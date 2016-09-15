@@ -1,6 +1,24 @@
-.startButton { /* stylelint-disable */
-  background: red;
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
+.startButton {
   font-weight: bold;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #FFF;
+  border: none;
+  border-radius: 0.5em;
+  background: #0678FC;
+}
+
+.startButton:hover {
+  background: #0E72E7;
+}
+
+.startButton:active,
+.startButton:focus {
+  border: none;
+  outline: 0;
+  background: #1669CB;
 }

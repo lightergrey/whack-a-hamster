@@ -5,6 +5,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import styles from './styles.css';
+
 import { createStructuredSelector } from 'reselect';
 import {
   startGame,
@@ -41,7 +43,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
     }
 
     return (
-      <div>
+      <div className={styles.homePage}>
         {score}
         {startButton}
         <Grid

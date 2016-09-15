@@ -4,6 +4,7 @@
 
 import {
   START_GAME,
+  END_GAME,
   GENERATE_HOLES,
   INCREMENT_SCORE,
 } from './constants';
@@ -30,7 +31,12 @@ function homeReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
       return state
+        .set('score', 0)
         .set('isStarted', true);
+    case END_GAME:
+      return state
+        .set('holes', false)
+        .set('isStarted', false);
     case GENERATE_HOLES:
       return state
         .set('holes', generateHoles(state.get('width'), state.get('height')));

@@ -4,6 +4,7 @@
 
 import {
   START_GAME,
+  END_GAME,
   GENERATE_HOLES,
   INCREMENT_SCORE,
 } from './constants';
@@ -11,6 +12,12 @@ import {
 export function startGame() {
   return {
     type: START_GAME,
+  };
+}
+
+export function endGame() {
+  return {
+    type: END_GAME,
   };
 }
 

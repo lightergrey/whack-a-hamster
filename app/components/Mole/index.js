@@ -8,13 +8,15 @@ import React from 'react';
 
 import styles from './styles.css';
 
-function Mole({ onClickMole }) {
+function Mole({ mole, onClickMole }) {
+  let content = mole.whacked ? '🍕' : '🐹';
   return (
-    <div className={styles.mole} onClick={onClickMole}>🐹</div>
+    <div className={styles.mole} onClick={onClickMole}>{content}</div>
   );
 }
 
 Mole.propTypes = {
+  mole: React.PropTypes.object,
   onClickMole: React.PropTypes.func.isRequired,
 };
 

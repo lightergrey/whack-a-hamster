@@ -1,7 +1,7 @@
 import { fork, call, put, take, select } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 
-import getMoles from 'utils/getMoles';
+import getGrid from 'utils/getGrid';
 
 import {
   START_GAME,
@@ -10,7 +10,7 @@ import {
 
 import {
   endGame,
-  populateHoles,
+  setGrid,
 } from './actions';
 
 import {
@@ -46,9 +46,8 @@ export function* startRounds() {
   const chan = yield call(roundCounter, rounds, duration);
   try {
     while (true) { // eslint-disable-line no-constant-condition
-      const count = width * height;
-      const moles = yield call(getMoles, count);
-      yield put(populateHoles(moles));
+      const grid = yield call(getGrid, width, height);
+      yield put(setGrid(grid));
       yield take(chan);
     }
   } finally {

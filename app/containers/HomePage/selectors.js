@@ -16,9 +16,9 @@ const selectIsFinished = () => createSelector(
   (homeState) => homeState.get('isFinished')
 );
 
-const selectHoles = () => createSelector(
+const selectGrid = () => createSelector(
   selectHome(),
-  (homeState) => homeState.get('holes')
+  (homeState) => homeState.get('grid')
 );
 
 const selectWidth = () => createSelector(
@@ -50,7 +50,7 @@ export {
   selectHome,
   selectIsStarted,
   selectIsFinished,
-  selectHoles,
+  selectGrid,
   selectWidth,
   selectHeight,
   selectRounds,

@@ -12,7 +12,7 @@ import styles from './styles.css';
 function Hole({ mole, onClickMole }) {
   let content;
   if (mole) {
-    content = <Mole onClickMole={onClickMole} />;
+    content = <Mole mole={mole} onClickMole={onClickMole} />;
   }
 
   return (
@@ -25,7 +25,7 @@ function Hole({ mole, onClickMole }) {
 Hole.propTypes = {
   onClickMole: React.PropTypes.func.isRequired,
   mole: React.PropTypes.oneOfType([
-    React.PropTypes.node,
+    React.PropTypes.object,
     React.PropTypes.bool,
   ]),
 };

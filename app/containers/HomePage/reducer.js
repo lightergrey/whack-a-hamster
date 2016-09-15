@@ -4,21 +4,20 @@
 
 import {
   START_GAME,
+  END_GAME,
+  POPULATE_HOLES,
   INCREMENT_SCORE,
 } from './constants';
 
 import { List, fromJS } from 'immutable';
-import luckio from 'luckio';
-
-function generateHoles(width, height) {
-  const isLucky = luckio(20);
-  return new List(Array(width * height).fill().map(() => isLucky()));
-}
 
 const initialState = fromJS({
-  width: 4, // This will be setable in the future
-  height: 4, // This will be setable in the future
+  width: 6, // This will be setable in the future
+  height: 6, // This will be setable in the future
+  rounds: 5, // This will be setable in the future
+  duration: 1500, // This will be setable in the future
   isStarted: false,
+  isFinished: false,
   holes: false,
   score: 0,
 });
@@ -27,8 +26,17 @@ function homeReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
       return state
+        .set('score', 0)
         .set('isStarted', true)
-        .set('holes', generateHoles(state.get('width'), state.get('height')));
+        .set('isFinished', false);
+    case END_GAME:
+      return state
+        .set('holes', false)
+        .set('isStarted', false)
+        .set('isFinished', true);
+    case POPULATE_HOLES:
+      return state
+        .set('holes', new List(action.moles));
     case INCREMENT_SCORE:
       return state
         .set('score', state.get('score') + 1);

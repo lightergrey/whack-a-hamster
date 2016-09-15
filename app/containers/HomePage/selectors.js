@@ -11,6 +11,11 @@ const selectIsStarted = () => createSelector(
   (homeState) => homeState.get('isStarted')
 );
 
+const selectIsFinished = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('isFinished')
+);
+
 const selectHoles = () => createSelector(
   selectHome(),
   (homeState) => homeState.get('holes')
@@ -21,6 +26,21 @@ const selectWidth = () => createSelector(
   (homeState) => homeState.get('width')
 );
 
+const selectHeight = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('height')
+);
+
+const selectRounds = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('rounds')
+);
+
+const selectDuration = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('duration')
+);
+
 const selectScore = () => createSelector(
   selectHome(),
   (homeState) => homeState.get('score')
@@ -29,7 +49,11 @@ const selectScore = () => createSelector(
 export {
   selectHome,
   selectIsStarted,
+  selectIsFinished,
   selectHoles,
   selectWidth,
+  selectHeight,
+  selectRounds,
+  selectDuration,
   selectScore,
 };

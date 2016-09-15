@@ -7,10 +7,10 @@
 import React, { PropTypes, Children } from 'react';
 import styles from './styles.css';
 
-function StartButton(props) {
+function StartButton({ onClickStart, children }) {
   return (
-    <button className={styles.startButton} onClick={props.onClickStart}>
-      {Children.toArray(props.children)}
+    <button className={styles.startButton} onClick={onClickStart}>
+      {Children.toArray(children)}
     </button>
   );
 }

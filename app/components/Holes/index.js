@@ -9,14 +9,16 @@ import Hole from '../Hole';
 
 import styles from './styles.css';
 
-function Holes({ holes, onClickMole }) {
+function Holes({ holes, onClickMole, width }) {
   let content;
-  const width = 4; // TODO; fix
   if (holes) {
     const rows = (
-      holes.map((hole, i) => (
-        i % width === 0 ? holes.slice(i, i + width) : null
-      )).filter((e) => e)
+      holes.map((hole, i) => {
+        if (i % width === 0) {
+          return holes.slice(i, i + width);
+        }
+        return null;
+      }).filter((e) => e)
     );
 
     content = (
@@ -47,7 +49,8 @@ Holes.propTypes = {
   holes: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,
-  ]),
+  ]).isRequired,
+  width: React.PropTypes.number.isRequired,
 };
 
 export default Holes;

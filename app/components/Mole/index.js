@@ -15,13 +15,14 @@ function Mole({ mole, onClickMole }) {
       onClickMole();
     }
   };
+
   return (
     <div className={styles.mole} onClick={onWhack}>{content}</div>
   );
 }
 
 Mole.propTypes = {
-  mole: React.PropTypes.object,
+  mole: React.PropTypes.object.isRequired,
   onClickMole: React.PropTypes.func.isRequired,
 };
 

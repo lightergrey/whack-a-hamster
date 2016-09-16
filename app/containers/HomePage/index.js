@@ -49,6 +49,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
         <Holes
           onClickMole={this.props.onClickMole}
           holes={this.props.holes}
+          width={this.props.width}
         />
       </div>
     );
@@ -56,15 +57,15 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 }
 
 HomePage.propTypes = {
-  isStarted: React.PropTypes.bool,
-  isFinished: React.PropTypes.bool,
+  isStarted: React.PropTypes.bool.isRequired,
+  isFinished: React.PropTypes.bool.isRequired,
   holes: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,
-  ]),
+  ]).isRequired,
   width: React.PropTypes.number.isRequired,
-  score: React.PropTypes.number,
-  onClickStart: React.PropTypes.func,
+  score: React.PropTypes.number.isRequired,
+  onClickStart: React.PropTypes.func.isRequired,
   onClickMole: React.PropTypes.func.isRequired,
 };
 

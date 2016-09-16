@@ -27,7 +27,7 @@ Hole.propTypes = {
   hole: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,
-  ]),
+  ]).isRequired,
 };
 
 export default Hole;

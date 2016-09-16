@@ -1,5 +1,5 @@
 /*
- * HomePage
+ * Game
  */
 
 import React from 'react';
@@ -25,7 +25,7 @@ import {
   selectScore,
 } from './selectors';
 
-export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Game extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     let startButton;
@@ -43,7 +43,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
     }
 
     return (
-      <div className={styles.homePage}>
+      <div className={styles.game}>
         {score}
         {startButton}
         <Holes
@@ -56,7 +56,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
   }
 }
 
-HomePage.propTypes = {
+Game.propTypes = {
   isStarted: React.PropTypes.bool.isRequired,
   isFinished: React.PropTypes.bool.isRequired,
   holes: React.PropTypes.oneOfType([
@@ -89,4 +89,4 @@ const mapStateToProps = createStructuredSelector({
   score: selectScore(),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

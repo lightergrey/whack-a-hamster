@@ -1,5 +1,5 @@
 /*
- * Home Actions
+ * Game Actions
  */
 
 import {

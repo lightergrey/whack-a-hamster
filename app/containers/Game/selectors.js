@@ -1,58 +1,58 @@
 /**
- * Home Selectors
+ * Game Selectors
  */
 
 import { createSelector } from 'reselect';
 
-const selectHome = () => (state) => state.get('home');
+const selectGame = () => (state) => state.get('home');
 
 const selectIsStarted = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('isStarted')
 );
 
 const selectIsFinished = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('isFinished')
 );
 
 const selectHoles = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('holes')
 );
 
 const selectWidth = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('width')
 );
 
 const selectHeight = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('height')
 );
 
 const selectRounds = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('rounds')
 );
 
 const selectDuration = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('duration')
 );
 
 const selectScore = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('score')
 );
 
 const selectMoleCount = () => createSelector(
-  selectHome(),
+  selectGame(),
   (homeState) => homeState.get('moleCount')
 );
 
 export {
-  selectHome,
+  selectGame,
   selectIsStarted,
   selectIsFinished,
   selectHoles,

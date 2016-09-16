@@ -1,5 +1,5 @@
 /*
- * Home Reducer
+ * Game Reducer
  */
 
 import {
@@ -40,7 +40,7 @@ function holeReducer(state, action) {
   }
 }
 
-function homeReducer(state = initialState, action) {
+function gameReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
       return state
@@ -64,4 +64,4 @@ function homeReducer(state = initialState, action) {
   }
 }
 
-export default homeReducer;
+export default gameReducer;

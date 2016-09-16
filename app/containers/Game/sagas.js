@@ -1,3 +1,7 @@
+/*
+ * Game Sagas
+ */
+
 import { fork, call, put, take, select } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 

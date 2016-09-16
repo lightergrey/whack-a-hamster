@@ -18,6 +18,7 @@ import {
   selectDuration,
   selectWidth,
   selectHeight,
+  selectMoleCount,
 } from './selectors';
 
 export function* roundCounter(rounds, duration) {
@@ -43,11 +44,12 @@ export function* startRounds() {
   const duration = yield select(selectDuration());
   const width = yield select(selectWidth());
   const height = yield select(selectHeight());
-  const count = width * height;
+  const moleCount = yield select(selectMoleCount());
+  const length = width * height;
   const chan = yield call(roundCounter, rounds, duration);
   try {
     while (true) { // eslint-disable-line no-constant-condition
-      const holes = yield call(getHoles, count);
+      const holes = yield call(getHoles, length, moleCount);
       yield put(setHoles(holes));
       yield take(chan);
     }

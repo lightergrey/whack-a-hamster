@@ -46,7 +46,8 @@
     "test:firefox": "npm run test -- --browsers Firefox",
     "test:safari": "npm run test -- --browsers Safari",
     "test:ie": "npm run test -- --browsers IE",
-    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls",
+    "postinstall": "npm run build:clean"
   },
   "lint-staged": {
     "*.js": "lint:eslint",
@@ -258,7 +259,6 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.0",
     "lint-staged": "2.0.3",
-    "luckio": "^1.0.1",
     "minimist": "1.2.0",
     "mocha": "3.0.2",
     "ngrok": "2.2.2",

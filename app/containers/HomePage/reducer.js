@@ -15,7 +15,7 @@ const initialState = fromJS({
   width: 4, // This will be setable in the future
   height: 4, // This will be setable in the future
   rounds: 2, // This will be setable in the future
-  duration: 1000, // This will be setable in the future
+  duration: 1750, // This will be setable in the future
   moleCount: 3, // This will be setable in the future
   isStarted: false,
   isFinished: false,

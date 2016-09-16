@@ -10,12 +10,12 @@ import styles from './styles.css';
 import { createStructuredSelector } from 'reselect';
 import {
   startGame,
-  incrementScore,
+  whackMole,
 } from './actions';
 
 import StartButton from 'components/StartButton';
 import Score from 'components/Score';
-import Grid from 'components/Grid';
+import Holes from 'components/Holes';
 
 import {
   selectIsStarted,
@@ -46,9 +46,8 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
       <div className={styles.homePage}>
         {score}
         {startButton}
-        <Grid
+        <Holes
           onClickMole={this.props.onClickMole}
-          width={this.props.width}
           holes={this.props.holes}
         />
       </div>
@@ -74,8 +73,8 @@ function mapDispatchToProps(dispatch) {
     onClickStart: () => {
       dispatch(startGame());
     },
-    onClickMole: () => {
-      dispatch(incrementScore());
+    onClickMole: (id) => {
+      dispatch(whackMole(id));
     },
     dispatch,
   };

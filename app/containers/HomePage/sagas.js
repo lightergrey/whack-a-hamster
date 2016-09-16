@@ -1,7 +1,7 @@
 import { fork, call, put, take, select } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 
-import getGrid from 'utils/getGrid';
+import getHoles from 'utils/getHoles';
 
 import {
   START_GAME,
@@ -10,7 +10,7 @@ import {
 
 import {
   endGame,
-  setGrid,
+  setHoles,
 } from './actions';
 
 import {
@@ -43,11 +43,12 @@ export function* startRounds() {
   const duration = yield select(selectDuration());
   const width = yield select(selectWidth());
   const height = yield select(selectHeight());
+  const count = width * height;
   const chan = yield call(roundCounter, rounds, duration);
   try {
     while (true) { // eslint-disable-line no-constant-condition
-      const grid = yield call(getGrid, width, height);
-      yield put(setGrid(grid));
+      const holes = yield call(getHoles, count);
+      yield put(setHoles(holes));
       yield take(chan);
     }
   } finally {

@@ -5,8 +5,8 @@
 import {
   START_GAME,
   END_GAME,
-  POPULATE_HOLES,
-  INCREMENT_SCORE,
+  SET_HOLES,
+  WHACK_MOLE,
 } from './constants';
 
 export function startGame() {
@@ -21,15 +21,16 @@ export function endGame() {
   };
 }
 
-export function populateHoles(moles) {
+export function setHoles(holes) {
   return {
-    type: POPULATE_HOLES,
-    moles,
+    type: SET_HOLES,
+    holes,
   };
 }
 
-export function incrementScore() {
+export function whackMole(id) {
   return {
-    type: INCREMENT_SCORE,
+    type: WHACK_MOLE,
+    id,
   };
 }

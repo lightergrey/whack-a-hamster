@@ -9,9 +9,14 @@ import React from 'react';
 import styles from './styles.css';
 
 function Mole({ mole, onClickMole }) {
-  let content = mole.whacked ? '🍕' : '🐹';
+  const content = mole.whacked ? '👊' : '🐹';
+  const onWhack = () => {
+    if (!mole.whacked) {
+      onClickMole();
+    }
+  };
   return (
-    <div className={styles.mole} onClick={onClickMole}>{content}</div>
+    <div className={styles.mole} onClick={onWhack}>{content}</div>
   );
 }
 

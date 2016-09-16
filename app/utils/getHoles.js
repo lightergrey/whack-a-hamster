@@ -1,22 +1,18 @@
-import luckio from 'luckio';
-
-function getMole(id) {
-  let hole;
-  if (luckio(20)()) {
-    hole = {
-      id,
-      mole: {
-        whacked: false,
-      },
-    };
-  } else {
-    hole = {
-      id,
-    };
-  }
-  return hole;
+function getRandomUnfilledHole(holes) {
+  const holeIndex = Math.floor(Math.random() * holes.length);
+  return (typeof holes[holeIndex].mole === 'undefined') ? holeIndex : getRandomUnfilledHole(holes);
 }
 
-export default function getHoles(count) {
-  return Array(count).fill().map((_, id) => getMole(id));
+export default function getHoles(length, moleCount) {
+  const holes = Array(length).fill().map((_, id) => ({ id }));
+
+  Array(moleCount).fill().forEach(() => {
+    const mole = {
+      whacked: false,
+    };
+    const holeIndex = getRandomUnfilledHole(holes);
+    holes[holeIndex] = Object.assign(holes[holeIndex], { mole });
+  });
+
+  return holes;
 }

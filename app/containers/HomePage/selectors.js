@@ -46,6 +46,11 @@ const selectScore = () => createSelector(
   (homeState) => homeState.get('score')
 );
 
+const selectMoleCount = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('moleCount')
+);
+
 export {
   selectHome,
   selectIsStarted,
@@ -56,4 +61,5 @@ export {
   selectRounds,
   selectDuration,
   selectScore,
+  selectMoleCount,
 };

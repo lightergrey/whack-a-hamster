@@ -12,11 +12,11 @@ import {
 import { List, fromJS } from 'immutable';
 
 const initialState = fromJS({
-  width: 4, // This will be setable in the future
-  height: 4, // This will be setable in the future
-  rounds: 2, // This will be setable in the future
-  duration: 1750, // This will be setable in the future
-  moleCount: 3, // This will be setable in the future
+  width: 4,       // This can be configurable in the future
+  height: 4,      // This can be configurable in the future
+  rounds: 2,      // This can be configurable in the future
+  duration: 1250, // This can be configurable in the future
+  moleCount: 3,   // This can be configurable in the future
   isStarted: false,
   isFinished: false,
   holes: false,

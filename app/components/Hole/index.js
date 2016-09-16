@@ -9,10 +9,10 @@ import Mole from '../Mole';
 
 import styles from './styles.css';
 
-function Hole({ hole, onClickMole }) {
+function Hole({ hole, onWhackMole }) {
   let content;
   if (hole.mole) {
-    content = <Mole mole={hole.mole} onClickMole={onClickMole} />;
+    content = <Mole mole={hole.mole} onWhackMole={onWhackMole} />;
   }
 
   return (
@@ -23,7 +23,7 @@ function Hole({ hole, onClickMole }) {
 }
 
 Hole.propTypes = {
-  onClickMole: React.PropTypes.func.isRequired,
+  onWhackMole: React.PropTypes.func.isRequired,
   hole: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,

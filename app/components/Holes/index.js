@@ -9,9 +9,10 @@ import Hole from '../Hole';
 
 import styles from './styles.css';
 
-function Holes({ holes, onClickMole, width }) {
+function Holes({ holes, onWhackMole, width }) {
   let content;
   if (holes) {
+    // Split the array of holes into rows based on width
     const rows = (
       holes.map((hole, i) => {
         if (i % width === 0) {
@@ -21,6 +22,7 @@ function Holes({ holes, onClickMole, width }) {
       }).filter((e) => e)
     );
 
+    // Render the holes from the rows
     content = (
       rows.map((row, rowIndex) => (
         <div className={styles.row} key={`row-${rowIndex}`}>
@@ -28,7 +30,7 @@ function Holes({ holes, onClickMole, width }) {
             <Hole
               hole={hole}
               key={`hole-${hole.id}`}
-              onClickMole={() => onClickMole(hole.id)}
+              onWhackMole={() => onWhackMole(hole.id)}
             />
           )}
         </div>
@@ -45,7 +47,7 @@ function Holes({ holes, onClickMole, width }) {
 }
 
 Holes.propTypes = {
-  onClickMole: React.PropTypes.func.isRequired,
+  onWhackMole: React.PropTypes.func.isRequired,
   holes: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,

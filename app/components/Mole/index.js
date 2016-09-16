@@ -8,22 +8,22 @@ import React from 'react';
 
 import styles from './styles.css';
 
-function Mole({ mole, onClickMole }) {
+function Mole({ mole, onWhackMole }) {
   const content = mole.whacked ? '👊' : '🐹';
-  const onWhack = () => {
+  const onClick = () => {
     if (!mole.whacked) {
-      onClickMole();
+      onWhackMole();
     }
   };
 
   return (
-    <div className={styles.mole} onClick={onWhack}>{content}</div>
+    <div className={styles.mole} onClick={onClick}>{content}</div>
   );
 }
 
 Mole.propTypes = {
   mole: React.PropTypes.object.isRequired,
-  onClickMole: React.PropTypes.func.isRequired,
+  onWhackMole: React.PropTypes.func.isRequired,
 };
 
 export default Mole;

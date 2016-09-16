@@ -21,6 +21,9 @@ import {
   selectMoleCount,
 } from './selectors';
 
+/**
+ * Emits a set number of rounds on an interval.
+*/
 export function* roundCounter(rounds, duration) {
   let count = rounds;
   return eventChannel(emitter => {
@@ -39,6 +42,9 @@ export function* roundCounter(rounds, duration) {
   });
 }
 
+/**
+ * Controls the game flow.
+*/
 export function* startRounds() {
   const rounds = yield select(selectRounds());
   const duration = yield select(selectDuration());
@@ -46,11 +52,13 @@ export function* startRounds() {
   const height = yield select(selectHeight());
   const moleCount = yield select(selectMoleCount());
   const length = width * height;
+  // Subscribe to the emitter
   const chan = yield call(roundCounter, rounds, duration);
   try {
     while (true) { // eslint-disable-line no-constant-condition
       const holes = yield call(getHoles, length, moleCount);
       yield put(setHoles(holes));
+      // Wait for emitter before looping again
       yield take(chan);
     }
   } finally {
@@ -58,6 +66,9 @@ export function* startRounds() {
   }
 }
 
+/**
+ * Starts the game and waits for game to end to look for next start.
+*/
 export function* startGameResponder() {
   while (true) { // eslint-disable-line no-constant-condition
     yield take(START_GAME);

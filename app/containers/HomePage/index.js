@@ -47,7 +47,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
         {score}
         {startButton}
         <Holes
-          onClickMole={this.props.onClickMole}
+          onWhackMole={this.props.onWhackMole}
           holes={this.props.holes}
           width={this.props.width}
         />
@@ -66,7 +66,7 @@ HomePage.propTypes = {
   width: React.PropTypes.number.isRequired,
   score: React.PropTypes.number.isRequired,
   onClickStart: React.PropTypes.func.isRequired,
-  onClickMole: React.PropTypes.func.isRequired,
+  onWhackMole: React.PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -74,7 +74,7 @@ function mapDispatchToProps(dispatch) {
     onClickStart: () => {
       dispatch(startGame());
     },
-    onClickMole: (id) => {
+    onWhackMole: (id) => {
       dispatch(whackMole(id));
     },
     dispatch,

@@ -8,27 +8,27 @@
  */
 function getIndexOfRandomUnfilledHole(holes) {
   const holeIndex = Math.floor(Math.random() * holes.length);
-  return (typeof holes[holeIndex].mole === 'undefined') ? holeIndex : getIndexOfRandomUnfilledHole(holes);
+  return (typeof holes[holeIndex].hamster === 'undefined') ? holeIndex : getIndexOfRandomUnfilledHole(holes);
 }
 
 /**
  * Returns an array of holes of certain length filled at random
- * with a number of moles.
+ * with a number of hamsters.
  *
  * @param  {number} length    The desired number of holes.
- * @param  {number} moleCount The desired number of moles.
+ * @param  {number} hamsterCount The desired number of hamsters.
  *
  * @return {array}  holes     An array of objects representing holes.
  */
-export default function getHoles(length, moleCount) {
+export default function getHoles(length, hamsterCount) {
   const holes = Array(length).fill().map((_, id) => ({ id }));
 
-  Array(moleCount).fill().forEach(() => {
-    const mole = {
+  Array(hamsterCount).fill().forEach(() => {
+    const hamster = {
       whacked: false,
     };
     const holeIndex = getIndexOfRandomUnfilledHole(holes);
-    holes[holeIndex] = Object.assign(holes[holeIndex], { mole });
+    holes[holeIndex] = Object.assign(holes[holeIndex], { hamster });
   });
 
   return holes;

@@ -10,7 +10,7 @@ import styles from './styles.css';
 import { createStructuredSelector } from 'reselect';
 import {
   startGame,
-  whackMole,
+  whackHamster,
 } from './actions';
 
 import StartButton from 'components/StartButton';
@@ -47,7 +47,7 @@ export class Game extends React.Component { // eslint-disable-line react/prefer-
         {score}
         {startButton}
         <Holes
-          onWhackMole={this.props.onWhackMole}
+          onWhackHamster={this.props.onWhackHamster}
           holes={this.props.holes}
           width={this.props.width}
         />
@@ -66,7 +66,7 @@ Game.propTypes = {
   width: React.PropTypes.number.isRequired,
   score: React.PropTypes.number.isRequired,
   onClickStart: React.PropTypes.func.isRequired,
-  onWhackMole: React.PropTypes.func.isRequired,
+  onWhackHamster: React.PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -74,8 +74,8 @@ function mapDispatchToProps(dispatch) {
     onClickStart: () => {
       dispatch(startGame());
     },
-    onWhackMole: (id) => {
-      dispatch(whackMole(id));
+    onWhackHamster: (id) => {
+      dispatch(whackHamster(id));
     },
     dispatch,
   };

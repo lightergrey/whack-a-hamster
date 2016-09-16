@@ -9,7 +9,7 @@ import Hole from '../Hole';
 
 import styles from './styles.css';
 
-function Holes({ holes, onWhackMole, width }) {
+function Holes({ holes, onWhackHamster, width }) {
   let content;
   if (holes) {
     // Split the array of holes into rows based on width
@@ -30,7 +30,7 @@ function Holes({ holes, onWhackMole, width }) {
             <Hole
               hole={hole}
               key={`hole-${hole.id}`}
-              onWhackMole={() => onWhackMole(hole.id)}
+              onWhackHamster={() => onWhackHamster(hole.id)}
             />
           )}
         </div>
@@ -47,7 +47,7 @@ function Holes({ holes, onWhackMole, width }) {
 }
 
 Holes.propTypes = {
-  onWhackMole: React.PropTypes.func.isRequired,
+  onWhackHamster: React.PropTypes.func.isRequired,
   holes: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,

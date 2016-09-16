@@ -5,14 +5,14 @@
 */
 
 import React from 'react';
-import Mole from '../Mole';
+import Hamster from '../Hamster';
 
 import styles from './styles.css';
 
-function Hole({ hole, onWhackMole }) {
+function Hole({ hole, onWhackHamster }) {
   let content;
-  if (hole.mole) {
-    content = <Mole mole={hole.mole} onWhackMole={onWhackMole} />;
+  if (hole.hamster) {
+    content = <Hamster hamster={hole.hamster} onWhackHamster={onWhackHamster} />;
   }
 
   return (
@@ -23,7 +23,7 @@ function Hole({ hole, onWhackMole }) {
 }
 
 Hole.propTypes = {
-  onWhackMole: React.PropTypes.func.isRequired,
+  onWhackHamster: React.PropTypes.func.isRequired,
   hole: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.bool,

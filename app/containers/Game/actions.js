@@ -6,7 +6,7 @@ import {
   START_GAME,
   END_GAME,
   SET_HOLES,
-  WHACK_MOLE,
+  WHACK_HAMSTER,
 } from './constants';
 
 export function startGame() {
@@ -28,9 +28,9 @@ export function setHoles(holes) {
   };
 }
 
-export function whackMole(id) {
+export function whackHamster(id) {
   return {
-    type: WHACK_MOLE,
+    type: WHACK_HAMSTER,
     id,
   };
 }

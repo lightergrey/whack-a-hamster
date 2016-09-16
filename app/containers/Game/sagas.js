@@ -22,7 +22,7 @@ import {
   selectDuration,
   selectWidth,
   selectHeight,
-  selectMoleCount,
+  selectHamsterCount,
 } from './selectors';
 
 /**
@@ -54,13 +54,13 @@ export function* startRounds() {
   const duration = yield select(selectDuration());
   const width = yield select(selectWidth());
   const height = yield select(selectHeight());
-  const moleCount = yield select(selectMoleCount());
+  const hamsterCount = yield select(selectHamsterCount());
   const length = width * height;
   // Subscribe to the emitter
   const chan = yield call(roundCounter, rounds, duration);
   try {
     while (true) { // eslint-disable-line no-constant-condition
-      const holes = yield call(getHoles, length, moleCount);
+      const holes = yield call(getHoles, length, hamsterCount);
       yield put(setHoles(holes));
       // Wait for emitter before looping again
       yield take(chan);

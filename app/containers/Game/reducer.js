@@ -6,7 +6,7 @@ import {
   START_GAME,
   END_GAME,
   SET_HOLES,
-  WHACK_MOLE,
+  WHACK_HAMSTER,
 } from './constants';
 
 import { List, fromJS } from 'immutable';
@@ -14,9 +14,9 @@ import { List, fromJS } from 'immutable';
 const initialState = fromJS({
   width: 4,       // This can be configurable in the future
   height: 4,      // This can be configurable in the future
-  rounds: 2,      // This can be configurable in the future
+  rounds: 4,      // This can be configurable in the future
   duration: 1250, // This can be configurable in the future
-  moleCount: 3,   // This can be configurable in the future
+  hamsterCount: 3,   // This can be configurable in the future
   isStarted: false,
   isFinished: false,
   holes: false,
@@ -25,13 +25,13 @@ const initialState = fromJS({
 
 function holeReducer(state, action) {
   switch (action.type) {
-    case WHACK_MOLE:
+    case WHACK_HAMSTER:
       if (state.id !== action.id) {
         return state;
       }
 
       return Object.assign({}, state, {
-        mole: {
+        hamster: {
           whacked: true,
         },
       });
@@ -55,7 +55,7 @@ function gameReducer(state = initialState, action) {
     case SET_HOLES:
       return state
         .set('holes', new List(action.holes));
-    case WHACK_MOLE:
+    case WHACK_HAMSTER:
       return state
         .set('holes', state.get('holes').map(hole => holeReducer(hole, action)))
         .set('score', state.get('score') + 1);

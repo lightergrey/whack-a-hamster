@@ -46,9 +46,9 @@ const selectScore = () => createSelector(
   (homeState) => homeState.get('score')
 );
 
-const selectMoleCount = () => createSelector(
+const selectHamsterCount = () => createSelector(
   selectGame(),
-  (homeState) => homeState.get('moleCount')
+  (homeState) => homeState.get('hamsterCount')
 );
 
 export {
@@ -61,5 +61,5 @@ export {
   selectRounds,
   selectDuration,
   selectScore,
-  selectMoleCount,
+  selectHamsterCount,
 };

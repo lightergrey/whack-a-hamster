@@ -1,4 +1,10 @@
 /**
+*
+* Get Holes
+*
+*/
+
+/**
  * Finds index of an unfilled hole in array of holes at random.
  * TODO: there is a possibility of an infinite loop if all holes are filled
  *
